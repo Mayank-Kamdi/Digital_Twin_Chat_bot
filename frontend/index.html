@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaTech Solutions - Business Digital Twin</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="twin-avatar">NT</div>
+        <div>
+          <h1>NovaTech Solutions</h1>
+          <p class="subtitle">Official Business Digital Twin &bull; <span id="status-indicator" class="status-online">Online</span></p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-admin-toggle" class="btn btn-secondary" title="Open Knowledge Base Admin">Admin Knowledge</button>
+        <button id="btn-clear-chat" class="btn btn-outline" title="Clear Conversation Memory">Clear Chat</button>
+      </div>
+    </header>
+
+    <!-- Active Memory & Context Bar -->
+    <div id="memory-context-bar" class="memory-bar hidden">
+      <span class="memory-label">Memory Context:</span>
+      <span id="memory-tags" class="memory-tags"></span>
+    </div>
+
+    <!-- Main Chat Window -->
+    <main class="chat-main">
+      <div id="chat-messages" class="chat-messages">
+        <div class="message-bubble assistant-bubble">
+          <div class="sender-name">NovaTech Twin</div>
+          <div class="message-text">
+            Hello! I am the official AI Digital Twin of <strong>NovaTech Solutions</strong>. I can assist you with our enterprise AI solutions, cloud DevOps, workflow automation, pricing, company policies, and support processes. 
+            <br><br>
+            How can I help you today?
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Suggested Questions -->
+      <div class="quick-prompts">
+        <span class="quick-label">Try asking:</span>
+        <button class="chip" data-q="What services does NovaTech provide?">Services</button>
+        <button class="chip" data-q="What is the price of your AI automation service?">Pricing</button>
+        <button class="chip" data-q="I run a small online store and want to automate customer support. Can you recommend a service?">Recommendation</button>
+        <button class="chip" data-q="What is your refund policy?">Refund Policy</button>
+        <button class="chip" data-q="How can I contact customer support?">Support Info</button>
+      </div>
+
+      <!-- Typing Indicator -->
+      <div id="typing-indicator" class="typing-indicator hidden">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="typing-text">NovaTech Twin is formulating response...</span>
+      </div>
+
+      <!-- Chat Input Field -->
+      <form id="chat-form" class="chat-input-area">
+        <input 
+          type="text" 
+          id="chat-input" 
+          placeholder="Ask a question about NovaTech's products, services, policies, or pricing..." 
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="btn-send" class="btn btn-primary">Send</button>
+      </form>
+    </main>
+
+    <!-- Admin Knowledge Management Modal -->
+    <div id="admin-modal" class="modal-overlay hidden">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2>Admin Knowledge Manager</h2>
+          <button id="btn-close-admin" class="btn-close">&times;</button>
+        </div>
+        <p class="modal-desc">Add or update verified business knowledge into the digital twin's vector store.</p>
+
+        <!-- Admin Form Tabs -->
+        <div class="admin-tabs">
+          <button class="admin-tab active" data-target="tab-faq">Add FAQ</button>
+          <button class="admin-tab" data-target="tab-policy">Add Policy</button>
+          <button class="admin-tab" data-target="tab-product">Add Product</button>
+          <button class="admin-tab" data-target="tab-document">Add Document</button>
+        </div>
+
+        <!-- Tab 1: FAQ -->
+        <form id="form-faq" class="admin-tab-content active">
+          <div class="form-group">
+            <label>Question:</label>
+            <input type="text" id="faq-question" placeholder="e.g. Do you offer SLA rollover credits?" required>
+          </div>
+          <div class="form-group">
+            <label>Answer:</label>
+            <textarea id="faq-answer" rows="3" placeholder="Accurate, factual business answer..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Index FAQ</button>
+        </form>
+
+        <!-- Tab 2: Policy -->
+        <form id="form-policy" class="admin-tab-content">
+          <div class="form-group">
+            <label>Policy Title:</label>
+            <input type="text" id="policy-title" placeholder="e.g. Disaster Recovery Policy" required>
+          </div>
+          <div class="form-group">
+            <label>Summary:</label>
+            <input type="text" id="policy-summary" placeholder="Brief summary" required>
+          </div>
+          <div class="form-group">
+            <label>Details:</label>
+            <textarea id="policy-details" rows="3" placeholder="Full policy clauses..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Index Policy</button>
+        </form>
+
+        <!-- Tab 3: Product -->
+        <form id="form-product" class="admin-tab-content">
+          <div class="form-group">
+            <label>Product / Service Name:</label>
+            <input type="text" id="prod-name" placeholder="e.g. Autonomous IT Ticket Resolving Bot" required>
+          </div>
+          <div class="form-group">
+            <label>Category:</label>
+            <input type="text" id="prod-category" placeholder="ai_agent" value="ai_agent" required>
+          </div>
+          <div class="form-group">
+            <label>Summary:</label>
+            <input type="text" id="prod-summary" placeholder="What does this product do?" required>
+          </div>
+          <div class="form-group">
+            <label>Best For:</label>
+            <input type="text" id="prod-bestfor" placeholder="Target customer segment" required>
+          </div>
+          <div class="form-group">
+            <label>Pricing Structure (e.g. Starter: $900/mo, Pro: $2,000/mo):</label>
+            <input type="text" id="prod-pricing" placeholder="Starter: $900/mo, Pro: $2,000/mo" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Index Product</button>
+        </form>
+
+        <!-- Tab 4: Document -->
+        <form id="form-document" class="admin-tab-content">
+          <div class="form-group">
+            <label>Document Title:</label>
+            <input type="text" id="doc-title" placeholder="e.g. Internal Partnership Guidelines 2026" required>
+          </div>
+          <div class="form-group">
+            <label>Content:</label>
+            <textarea id="doc-content" rows="4" placeholder="Full document text..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Index Document</button>
+        </form>
+
+        <div id="admin-status-msg" class="admin-status-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
