@@ -228,6 +228,13 @@
       "category": "security",
       "summary": "All client test data is automatically sanitized within 12 hours.",
       "details": "Under Section 4.9 of LYRA compliance, quarantined datasets are purged across all sandboxes within 12 hours."
+    },
+    {
+      "id": "pol-010",
+      "title": "Enterprise Zero-Trust Data Quarantine Policy",
+      "category": "security",
+      "summary": "All client test data is automatically sanitized within 12 hours.",
+      "details": "Under Section 4.9 of LYRA compliance, quarantined datasets are purged across all sandboxes within 12 hours."
     }
   ],
   "working_process": {

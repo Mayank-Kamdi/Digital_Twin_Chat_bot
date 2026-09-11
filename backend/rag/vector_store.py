@@ -1,51 +1,69 @@
-"""Vector Store implementation using TF-IDF and Cosine Similarity."""
+"""Vector Store implementation using pure Python TF-IDF and Cosine Similarity."""
 
 from typing import List, Dict, Any, Optional, Tuple
-import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+import math
+import re
+from collections import Counter
 
 
 class VectorStore:
-    """In-memory vector database with TF-IDF embeddings and cosine similarity retrieval."""
+    """In-memory vector database with pure Python TF-IDF embeddings and cosine similarity."""
 
     def __init__(self):
         self.documents: List[Dict[str, Any]] = []
-        self.vectorizer: Optional[TfidfVectorizer] = None
-        self.doc_vectors: Optional[np.ndarray] = None
+        self.doc_vectors: List[Dict[str, float]] = []
+        self.idf: Dict[str, float] = {}
+        self.vocab: set = set()
 
     def add_documents(self, docs: List[Dict[str, Any]]) -> None:
         """Adds a list of documents and re-indexes the vector space."""
         for doc in docs:
-            # Avoid duplicate IDs
             self.documents = [d for d in self.documents if d["id"] != doc["id"]]
             self.documents.append(doc)
         self._build_index()
 
     def add_document(self, doc: Dict[str, Any]) -> None:
-        """Adds a single document and updates index."""
         self.add_documents([doc])
 
+    def _tokenize(self, text: str) -> List[str]:
+        return re.findall(r'\b[a-z0-9]+\b', text.lower())
+
     def _build_index(self) -> None:
-        """Builds TF-IDF vector matrix over all documents."""
         if not self.documents:
-            self.vectorizer = None
-            self.doc_vectors = None
+            self.doc_vectors = []
+            self.idf = {}
+            self.vocab = set()
             return
 
-        corpus = []
-        for doc in self.documents:
-            # Combine title, category, and content for rich text representation
-            combined_text = f"{doc.get('title', '')} {doc.get('category', '')} {doc.get('content', '')}"
-            corpus.append(combined_text)
+        corpus_tokens = []
+        doc_frequencies = Counter()
 
-        self.vectorizer = TfidfVectorizer(
-            lowercase=True,
-            stop_words='english',
-            ngram_range=(1, 2),
-            sublinear_tf=True
-        )
-        self.doc_vectors = self.vectorizer.fit_transform(corpus)
+        for doc in self.documents:
+            combined_text = f"{doc.get('title', '')} {doc.get('category', '')} {doc.get('content', '')}"
+            tokens = self._tokenize(combined_text)
+            corpus_tokens.append(tokens)
+            for token in set(tokens):
+                doc_frequencies[token] += 1
+            self.vocab.update(tokens)
+
+        num_docs = len(self.documents)
+        self.idf = {token: math.log(num_docs / (1 + df)) + 1.0 for token, df in doc_frequencies.items()}
+
+        self.doc_vectors = []
+        for tokens in corpus_tokens:
+            tf = Counter(tokens)
+            vec = {}
+            norm_sq = 0.0
+            for token, count in tf.items():
+                weight = count * self.idf.get(token, 1.0)
+                vec[token] = weight
+                norm_sq += weight * weight
+            
+            norm = math.sqrt(norm_sq) if norm_sq > 0 else 1.0
+            # Normalize vector
+            for token in vec:
+                vec[token] /= norm
+            self.doc_vectors.append(vec)
 
     def search(
         self,
@@ -53,24 +71,36 @@ class VectorStore:
         top_k: int = 4,
         category_filter: Optional[str] = None
     ) -> List[Tuple[Dict[str, Any], float]]:
-        """
-        Searches the vector store for documents matching the query.
-        Returns list of (document, similarity_score) tuples sorted by score descending.
-        """
-        if not self.documents or self.vectorizer is None or self.doc_vectors is None:
+        if not self.documents or not self.doc_vectors:
             return []
 
-        query_vec = self.vectorizer.transform([query])
-        similarities = cosine_similarity(query_vec, self.doc_vectors)[0]
+        query_tokens = self._tokenize(query)
+        tf = Counter(query_tokens)
+        query_vec = {}
+        norm_sq = 0.0
+        
+        for token, count in tf.items():
+            if token in self.vocab:
+                weight = count * self.idf.get(token, 1.0)
+                query_vec[token] = weight
+                norm_sq += weight * weight
+                
+        query_norm = math.sqrt(norm_sq) if norm_sq > 0 else 1.0
 
         results = []
-        for idx, score in enumerate(similarities):
+        for idx, doc_vec in enumerate(self.doc_vectors):
             doc = self.documents[idx]
             if category_filter and doc.get("category") != category_filter:
                 continue
+                
+            score = 0.0
+            if query_norm > 0:
+                for token, weight in query_vec.items():
+                    if token in doc_vec:
+                        score += (weight / query_norm) * doc_vec[token]
+            
             results.append((doc, float(score)))
 
-        # Sort descending by score
         results.sort(key=lambda x: x[1], reverse=True)
         return results[:top_k]
 
@@ -85,5 +115,6 @@ class VectorStore:
 
     def clear(self) -> None:
         self.documents.clear()
-        self.vectorizer = None
-        self.doc_vectors = None
+        self.doc_vectors.clear()
+        self.idf.clear()
+        self.vocab.clear()
