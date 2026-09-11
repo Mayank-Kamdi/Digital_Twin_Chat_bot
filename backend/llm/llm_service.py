@@ -57,8 +57,13 @@ class LLMService:
                 "hallucination-guard"
             )
 
+        # Check for conversational greetings or general inquiries
+        lower_q = query.strip().lower()
+        is_greeting = lower_q in ["hi", "hello", "hey", "greetings", "good morning", "good afternoon", "good evening", "hi there", "hello there"]
+        is_general_inquiry = any(phrase in lower_q for phrase in ["what do you do", "who are you", "information", "about you", "what can you do", "tell me about", "services"])
+
         # 2. Completely unknown inquiry with zero domain relevance
-        if not is_in_domain and (not retrieved_docs or retrieved_docs[0].get("score", 0) < 0.08):
+        if not is_in_domain and not is_greeting and not is_general_inquiry and (not retrieved_docs or retrieved_docs[0].get("score", 0) < 0.08):
             return (
                 "I don't have that information in the current business knowledge base.",
                 True,
@@ -149,6 +154,16 @@ class LLMService:
         High-precision grounded synthesizer that extracts exact facts directly from
         the top matching retrieved business documents.
         """
+        lower_q = query.strip().lower()
+        is_greeting = lower_q in ["hi", "hello", "hey", "greetings", "good morning", "good afternoon", "good evening", "hi there", "hello there"]
+        is_general_inquiry = any(phrase in lower_q for phrase in ["what do you do", "who are you", "information", "about you", "what can you do", "tell me about", "services"])
+
+        if is_greeting:
+            return "Hello! I am the official AI Digital Twin for LYRA. How can I assist you with our IT, cloud, and AI solutions today?"
+            
+        if is_general_inquiry:
+            return "LYRA is an enterprise IT, cloud engineering, and AI solutions consultancy. We provide AI Customer Support Automation, Enterprise RAG Knowledge Systems, Cloud Infrastructure Optimization, and Data Analytics solutions. How can we help your business today?"
+
         if not docs or docs[0].get("score", 0) < 0.10:
             return "I don't have that information in the current business knowledge base."
 
@@ -156,7 +171,6 @@ class LLMService:
         category = top_doc.get("category", "")
         title = top_doc.get("title", "")
         content = top_doc.get("content", "")
-        lower_q = query.lower()
 
         # Follow-up pricing resolution
         if ("how much" in lower_q or "price" in lower_q or "cost" in lower_q) and mentioned_products:
