@@ -24,5 +24,5 @@ TOP_K_CHUNKS = int(os.getenv("TOP_K_CHUNKS", "4"))
 SIMILARITY_THRESHOLD = float(os.getenv("SIMILARITY_THRESHOLD", "0.15"))
 
 # Application Metadata
-APP_NAME = "NovaTech Solutions Digital Twin"
+APP_NAME = "LYRA Digital Twin"
 APP_VERSION = "1.0.0"

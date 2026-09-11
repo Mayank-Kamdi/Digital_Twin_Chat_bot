@@ -1,4 +1,4 @@
-"""Main Application Entry Point: Native Desktop & Web Server for NovaTech Digital Twin."""
+"""Main Application Entry Point: Native Desktop & Web Server for LYRA Digital Twin."""
 
 import sys
 import os
@@ -75,7 +75,7 @@ def main():
         import webview
         print("Launching native desktop application window...")
         window = webview.create_window(
-            title="NovaTech Solutions - Business Digital Twin",
+            title="LYRA - Business Digital Twin",
             url=f"http://{HOST}:{PORT}",
             width=1000,
             height=750,

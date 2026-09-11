@@ -1,4 +1,4 @@
-"""FastAPI Web Application & REST API for NovaTech Solutions Business Digital Twin."""
+"""FastAPI Web Application & REST API for LYRA Business Digital Twin."""
 
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
@@ -19,7 +19,7 @@ from backend.profile.business_profile import novatech_profile
 app = FastAPI(
     title=APP_NAME,
     version=APP_VERSION,
-    description="Business Digital Twin REST API for NovaTech Solutions"
+    description="Business Digital Twin REST API for LYRA"
 )
 
 # CORS middleware for local frontend interactions
@@ -107,7 +107,7 @@ async def clear_chat_endpoint(req: ClearMemoryRequest):
 
 @app.get("/api/profile")
 async def get_business_profile():
-    """Returns the full structured business profile for NovaTech Solutions."""
+    """Returns the full structured business profile for LYRA."""
     return novatech_profile.get_full_profile()
 
 

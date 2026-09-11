@@ -1,15 +1,15 @@
-"""Business Profile manager for NovaTech Solutions."""
+"""Business Profile manager for LYRA."""
 
 import json
 import os
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 
-DATA_PATH = Path(__file__).parent / "data" / "novatech_data.json"
+DATA_PATH = Path(__file__).parent / "data" / "lyra_data.json"
 
 
 class BusinessProfile:
-    """Encapsulates the structured profile and knowledge of NovaTech Solutions."""
+    """Encapsulates the structured profile and knowledge of LYRA."""
 
     def __init__(self, data_file: Optional[Path] = None):
         self.data_file = data_file or DATA_PATH
@@ -85,7 +85,7 @@ class BusinessProfile:
                 f"Business Goals: {', '.join(ci.get('business_goals', []))}\n"
                 f"Target Customers: {', '.join(ci.get('target_customers', []))}"
             ),
-            "metadata": {"type": "overview", "entity": "NovaTech Solutions"}
+            "metadata": {"type": "overview", "entity": "LYRA"}
         })
 
         # 2. Contact Information & Hours
@@ -95,7 +95,7 @@ class BusinessProfile:
             "category": "contact_and_hours",
             "title": "Contact Information & Business Working Hours",
             "content": (
-                f"NovaTech Solutions Contact Details:\n"
+                f"LYRA Contact Details:\n"
                 f"General Email: {contact.get('general_email')}\n"
                 f"Support Email: {contact.get('support_email')}\n"
                 f"Sales Email: {contact.get('sales_email')}\n"
@@ -105,7 +105,7 @@ class BusinessProfile:
                 f"Working Hours: {contact.get('working_hours')}\n"
                 f"Time Zone: {contact.get('time_zone')}"
             ),
-            "metadata": {"type": "contact", "entity": "NovaTech Solutions"}
+            "metadata": {"type": "contact", "entity": "LYRA"}
         })
 
         # 3. Departments & Organization
@@ -115,8 +115,8 @@ class BusinessProfile:
             "id": "doc-company-departments",
             "category": "departments",
             "title": "Organizational Structure & Departments",
-            "content": "NovaTech Solutions Organizational Structure & Departments:\n" + "\n".join(dept_lines),
-            "metadata": {"type": "departments", "entity": "NovaTech Solutions"}
+            "content": "LYRA Organizational Structure & Departments:\n" + "\n".join(dept_lines),
+            "metadata": {"type": "departments", "entity": "LYRA"}
         })
 
         # 4. Products & Services (individual chunk per product for maximum precision)
@@ -169,7 +169,7 @@ class BusinessProfile:
             "id": "doc-working-process",
             "category": "working_process",
             "title": f"Working Process: {wp.get('methodology')}",
-            "content": f"NovaTech Solutions Methodology: {wp.get('methodology')}\n\nStages:\n{stages_info}",
+            "content": f"LYRA Methodology: {wp.get('methodology')}\n\nStages:\n{stages_info}",
             "metadata": {"type": "process"}
         })
 
@@ -238,4 +238,5 @@ class BusinessProfile:
 
 
 # Singleton instance
-novatech_profile = BusinessProfile()
+lyra_profile = BusinessProfile()
+novatech_profile = lyra_profile

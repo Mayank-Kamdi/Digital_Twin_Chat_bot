@@ -1,13 +1,13 @@
 /**
- * NovaTech Solutions Business Digital Twin - Client Application Logic
+ * LYRA Business Digital Twin - Client Application Logic
  */
 
 document.addEventListener("DOMContentLoaded", () => {
   // Generate or retrieve session ID
-  let sessionId = localStorage.getItem("novatech_session_id");
+  let sessionId = localStorage.getItem("lyra_session_id");
   if (!sessionId) {
     sessionId = "session_" + Math.random().toString(36).substring(2, 9) + "_" + Date.now();
-    localStorage.setItem("novatech_session_id", sessionId);
+    localStorage.setItem("lyra_session_id", sessionId);
   }
 
   // DOM Elements
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const senderLabel = document.createElement("div");
     senderLabel.className = "sender-name";
-    senderLabel.textContent = sender === "user" ? "You" : "NovaTech Twin";
+    senderLabel.textContent = sender === "user" ? "You" : "LYRA Twin";
     bubble.appendChild(senderLabel);
 
     const messageText = document.createElement("div");
@@ -175,9 +175,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         chatMessages.innerHTML = `
           <div class="message-bubble assistant-bubble">
-            <div class="sender-name">NovaTech Twin</div>
+            <div class="sender-name">LYRA Twin</div>
             <div class="message-text">
-              Conversation memory has been cleared. How can I assist you with NovaTech Solutions today?
+              Conversation memory has been cleared. How can I assist you with LYRA today?
             </div>
           </div>
         `;

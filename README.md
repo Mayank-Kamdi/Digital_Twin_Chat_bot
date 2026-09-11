@@ -1,8 +1,8 @@
-# NovaTech Solutions - Business Digital Twin
+# LYRA - Business Digital Twin
 
-A production-ready AI Digital Twin application representing **NovaTech Solutions**, an enterprise IT, cloud engineering, and AI solutions consultancy.
+A production-ready AI Digital Twin application representing **LYRA**, an enterprise IT, cloud engineering, and AI solutions consultancy.
 
-The application acts as an intelligent digital representative that understands NovaTech's products, services, pricing tiers, business policies, working processes, customer support channels, and FAQs. It is built with a modular RAG architecture, conversation memory, strict hallucination controls, and an admin knowledge manager.
+The application acts as an intelligent digital representative that understands LYRA's products, services, pricing tiers, business policies, working processes, customer support channels, and FAQs. It is built with a modular RAG architecture, conversation memory, strict hallucination controls, and an admin knowledge manager.
 
 ---
 
@@ -16,7 +16,7 @@ The application acts as an intelligent digital representative that understands N
 - Source transparency chips showing citations from verified business documents with similarity scores.
 
 ### 2. Business Digital Twin Knowledge
-Detailed business profile for **NovaTech Solutions**:
+Detailed business profile for **LYRA**:
 - **5 Core Products & Services**:
   1. *AI Customer Support Automation* (Starter: $1,200/mo, Pro: $2,800/mo)
   2. *Enterprise RAG Knowledge System* ($4,500 setup + $1,800/mo)
@@ -45,7 +45,7 @@ Detailed business profile for **NovaTech Solutions**:
 
 ### 5. Strict Hallucination Guardrails
 - Answers strictly grounded in retrieved business context.
-- Fallback for out-of-scope/unrelated questions: Politely redirects to NovaTech business matters.
+- Fallback for out-of-scope/unrelated questions: Politely redirects to LYRA business matters.
 - Fallback for unknown business questions: Responds with:
   > *"I don't have that information in the current business knowledge base."*
 
@@ -128,7 +128,7 @@ Nandini Twin bot/
 │   ├── profile/
 │   │   ├── business_profile.py       # Profile accessor & RAG chunk generator
 │   │   └── data/
-│   │       └── novatech_data.json    # Complete NovaTech Solutions business dataset
+│   │       └── lyra_data.json        # Complete LYRA business dataset
 │   ├── rag/
 │   │   ├── vector_store.py           # In-memory TF-IDF + Cosine vector DB
 │   │   ├── retriever.py              # Query preprocessing & hybrid retrieval

@@ -51,7 +51,7 @@ class LLMService:
         # 1. Unrelated query check (Fallback behavior)
         if self.is_unrelated_query(query) and not is_in_domain:
             return (
-                "I am designed primarily to assist with NovaTech Solutions, our products, services, policies, and business inquiries. "
+                "I am designed primarily to assist with LYRA, our products, services, policies, and business inquiries. "
                 "How may I assist you with our solutions today?",
                 True,
                 "hallucination-guard"
@@ -116,7 +116,7 @@ class LLMService:
                 ],
                 "generationConfig": {
                     "temperature": 0.2,
-                    "maxOutputTokens": 800,
+                    "maxOutputTokens": 4096,
                     "topP": 0.95
                 }
             }
@@ -127,8 +127,9 @@ class LLMService:
                     candidates = data.get("candidates", [])
                     if candidates:
                         parts = candidates[0].get("content", {}).get("parts", [])
-                        if parts and "text" in parts[0]:
-                            return parts[0]["text"]
+                        text = "".join(p.get("text", "") for p in parts if "text" in p)
+                        if text:
+                            return text
                 else:
                     logger.warning(f"Gemini API returned status {resp.status_code} for {mod}: {resp.text[:200]}")
             except Exception as e:

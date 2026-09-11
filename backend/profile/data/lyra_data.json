@@ -1,11 +1,11 @@
 {
   "company_info": {
-    "name": "NovaTech Solutions",
-    "legal_name": "NovaTech Solutions Inc.",
+    "name": "LYRA",
+    "legal_name": "LYRA Inc.",
     "founded_year": 2021,
     "headquarters": "100 Innovation Boulevard, Suite 400, Boston, MA 02110, USA",
     "tagline": "Architecting Intelligent Digital Twins & AI Infrastructure for Modern Enterprises",
-    "overview": "NovaTech Solutions is an enterprise AI and cloud engineering consultancy that develops custom digital twins, intelligent customer support agents, and RAG knowledge systems. We bridge the gap between cutting-edge foundational models and real-world business automation, serving over 150 clients worldwide.",
+    "overview": "LYRA is an enterprise AI and cloud engineering consultancy that develops custom digital twins, intelligent customer support agents, and RAG knowledge systems. We bridge the gap between cutting-edge foundational models and real-world business automation, serving over 150 clients worldwide.",
     "mission": "To democratize intelligent automation and empower organizations of all sizes with reliable, hallucination-free AI twins and scalable cloud solutions.",
     "vision": "To become the global gold standard for enterprise digital twins and business-grounded artificial intelligence.",
     "business_goals": [
@@ -15,12 +15,12 @@
       "Achieve an average support ticket resolution acceleration of 75% for client operations"
     ],
     "contact": {
-      "general_email": "contact@novatechsolutions.ai",
-      "support_email": "support@novatechsolutions.ai",
-      "sales_email": "sales@novatechsolutions.ai",
+      "general_email": "contact@lyra.ai",
+      "support_email": "support@lyra.ai",
+      "sales_email": "sales@lyra.ai",
       "phone": "+1-800-555-0199",
       "international_phone": "+1-617-555-0142",
-      "website": "https://www.novatechsolutions.ai",
+      "website": "https://www.lyra.ai",
       "working_hours": "Monday to Friday: 9:00 AM \u2013 6:00 PM EST (Emergency 24/7 on-call support available for Enterprise Tier)",
       "time_zone": "Eastern Standard Time (UTC-5)"
     },
@@ -170,8 +170,8 @@
       "id": "pol-001",
       "title": "30-Day Money-Back Satisfaction Guarantee (Refund Policy)",
       "category": "billing_and_refunds",
-      "summary": "NovaTech Solutions offers a complete 30-day money-back guarantee for initial implementation and setup phases. If our solution does not meet documented milestone specifications within 30 days of kickoff, the client receives a 100% refund of setup fees.",
-      "details": "Refund requests must be submitted in writing to billing@novatechsolutions.ai. Monthly retainer fees already incurred are non-refundable once services are rendered, but subscriptions can be terminated immediately without future charges."
+      "summary": "LYRA offers a complete 30-day money-back guarantee for initial implementation and setup phases. If our solution does not meet documented milestone specifications within 30 days of kickoff, the client receives a 100% refund of setup fees.",
+      "details": "Refund requests must be submitted in writing to billing@lyra.ai. Monthly retainer fees already incurred are non-refundable once services are rendered, but subscriptions can be terminated immediately without future charges."
     },
     {
       "id": "pol-002",
@@ -184,7 +184,7 @@
       "id": "pol-003",
       "title": "Data Privacy, Confidentiality & Model Training Policy",
       "category": "privacy_security",
-      "summary": "NovaTech Solutions strictly enforces a Zero-Training Policy: client proprietary data, conversation logs, and internal documents are NEVER used to train foundational AI models or shared with third parties.",
+      "summary": "LYRA strictly enforces a Zero-Training Policy: client proprietary data, conversation logs, and internal documents are NEVER used to train foundational AI models or shared with third parties.",
       "details": "All data in transit is encrypted with TLS 1.3, and data at rest utilizes AES-256 encryption. We comply with SOC2 Type II and GDPR standards. Clients retain 100% intellectual property rights over their data, knowledge assets, and customized twin prompts."
     },
     {
@@ -192,7 +192,7 @@
       "title": "Service Delivery, Milestones & Code Handover Policy",
       "category": "delivery_handover",
       "summary": "Every development project follows a structured sprint milestone schedule with written sign-offs at each phase.",
-      "details": "Upon completion of custom development and full payment, clients receive full administrative access, source code repository transfers, and comprehensive operational documentation. NovaTech provides 14 days of complimentary post-handover bug fixing."
+      "details": "Upon completion of custom development and full payment, clients receive full administrative access, source code repository transfers, and comprehensive operational documentation. LYRA provides 14 days of complimentary post-handover bug fixing."
     },
     {
       "id": "pol-005",
@@ -206,7 +206,21 @@
       "title": "Enterprise Zero-Trust Data Quarantine Policy",
       "category": "security",
       "summary": "All client test data is automatically sanitized within 12 hours.",
-      "details": "Under Section 4.9 of NovaTech compliance, quarantined datasets are purged across all sandboxes within 12 hours."
+      "details": "Under Section 4.9 of LYRA compliance, quarantined datasets are purged across all sandboxes within 12 hours."
+    },
+    {
+      "id": "pol-007",
+      "title": "Enterprise Zero-Trust Data Quarantine Policy",
+      "category": "security",
+      "summary": "All client test data is automatically sanitized within 12 hours.",
+      "details": "Under Section 4.9 of LYRA compliance, quarantined datasets are purged across all sandboxes within 12 hours."
+    },
+    {
+      "id": "pol-008",
+      "title": "Enterprise Zero-Trust Data Quarantine Policy",
+      "category": "security",
+      "summary": "All client test data is automatically sanitized within 12 hours.",
+      "details": "Under Section 4.9 of LYRA compliance, quarantined datasets are purged across all sandboxes within 12 hours."
     }
   ],
   "working_process": {
@@ -247,9 +261,9 @@
   "customer_support": {
     "channels": [
       "Online Web Chat & Digital Twin (Instant 24/7)",
-      "Email: support@novatechsolutions.ai (Mon-Fri 9AM-6PM EST, < 4h response)",
+      "Email: support@lyra.ai (Mon-Fri 9AM-6PM EST, < 4h response)",
       "Direct Phone: +1-800-555-0199 (Toll-free, Mon-Fri 9AM-6PM EST)",
-      "Client Support Portal: https://portal.novatechsolutions.ai"
+      "Client Support Portal: https://portal.lyra.ai"
     ],
     "support_hours": "Monday through Friday, 9:00 AM \u2013 6:00 PM Eastern Standard Time (EST). Enterprise clients have 24/7 emergency hotline access.",
     "ticket_tiers": [
@@ -270,8 +284,8 @@
   "faqs": [
     {
       "id": "faq-001",
-      "question": "What services does NovaTech provide?",
-      "answer": "NovaTech Solutions provides five core services: 1) AI Customer Support Automation (intelligent 24/7 customer service twins), 2) Enterprise RAG Knowledge Systems (secure internal search over company documents), 3) Cloud Infrastructure Optimization & DevOps (cost reduction and CI/CD pipelines), 4) Custom Workflow Automation Agents (operational automation across CRM/ERP), and 5) Data Analytics & BI Dashboard Suites (real-time executive reporting)."
+      "question": "What services does LYRA provide?",
+      "answer": "LYRA provides five core services: 1) AI Customer Support Automation (intelligent 24/7 customer service twins), 2) Enterprise RAG Knowledge Systems (secure internal search over company documents), 3) Cloud Infrastructure Optimization & DevOps (cost reduction and CI/CD pipelines), 4) Custom Workflow Automation Agents (operational automation across CRM/ERP), and 5) Data Analytics & BI Dashboard Suites (real-time executive reporting)."
     },
     {
       "id": "faq-002",
@@ -286,12 +300,12 @@
     {
       "id": "faq-004",
       "question": "What is your refund policy?",
-      "answer": "NovaTech Solutions offers a 30-day money-back satisfaction guarantee on all initial implementation and setup phases. If our solution does not achieve the agreed milestone deliverables within 30 days of project kickoff, you will receive a 100% refund of your setup fees."
+      "answer": "LYRA offers a 30-day money-back satisfaction guarantee on all initial implementation and setup phases. If our solution does not achieve the agreed milestone deliverables within 30 days of project kickoff, you will receive a 100% refund of your setup fees."
     },
     {
       "id": "faq-005",
       "question": "How can I contact customer support?",
-      "answer": "You can contact NovaTech customer support via email at support@novatechsolutions.ai, by phone at +1-800-555-0199 (Mon\u2013Fri 9:00 AM \u2013 6:00 PM EST), or via our online client portal at portal.novatechsolutions.ai. Enterprise tier clients also have access to our 24/7 emergency support line."
+      "answer": "You can contact LYRA customer support via email at support@lyra.ai, by phone at +1-800-555-0199 (Mon\u2013Fri 9:00 AM \u2013 6:00 PM EST), or via our online client portal at portal.lyra.ai. Enterprise tier clients also have access to our 24/7 emergency support line."
     },
     {
       "id": "faq-006",
@@ -301,22 +315,22 @@
     {
       "id": "faq-007",
       "question": "Can you recommend a service based on my requirements?",
-      "answer": "Yes, absolutely! If you describe your business situation, current bottlenecks, or goals (for instance, high support volume, unorganized documents, high cloud costs, or manual data entry), I will analyze your requirements and recommend the exact NovaTech solution tailored to your operational needs."
+      "answer": "Yes, absolutely! If you describe your business situation, current bottlenecks, or goals (for instance, high support volume, unorganized documents, high cloud costs, or manual data entry), I will analyze your requirements and recommend the exact LYRA solution tailored to your operational needs."
     },
     {
       "id": "faq-008",
       "question": "What products does the company offer?",
-      "answer": "NovaTech Solutions offers five principal products and services: 1) AI Customer Support Automation, 2) Enterprise RAG Knowledge System, 3) Cloud Infrastructure Optimization & DevOps, 4) Custom Workflow Automation Agent, and 5) Data Analytics & BI Dashboard Suite."
+      "answer": "LYRA offers five principal products and services: 1) AI Customer Support Automation, 2) Enterprise RAG Knowledge System, 3) Cloud Infrastructure Optimization & DevOps, 4) Custom Workflow Automation Agent, and 5) Data Analytics & BI Dashboard Suite."
     },
     {
       "id": "faq-009",
       "question": "What are the company's working hours?",
-      "answer": "NovaTech Solutions business and customer support hours are Monday through Friday, 9:00 AM to 6:00 PM Eastern Standard Time (EST). Emergency support for enterprise SLA clients is available 24/7."
+      "answer": "LYRA business and customer support hours are Monday through Friday, 9:00 AM to 6:00 PM Eastern Standard Time (EST). Emergency support for enterprise SLA clients is available 24/7."
     },
     {
       "id": "faq-010",
       "question": "Tell me about the company.",
-      "answer": "NovaTech Solutions Inc. was founded in 2021 and is headquartered in Boston, MA. We specialize in building reliable, grounded AI digital twins, enterprise RAG knowledge engines, and modern cloud infrastructure. Our mission is to democratize intelligent automation for businesses of all sizes, with a strict emphasis on zero hallucinations, data privacy, and measurable ROI."
+      "answer": "LYRA Inc. was founded in 2021 and is headquartered in Boston, MA. We specialize in building reliable, grounded AI digital twins, enterprise RAG knowledge engines, and modern cloud infrastructure. Our mission is to democratize intelligent automation for businesses of all sizes, with a strict emphasis on zero hallucinations, data privacy, and measurable ROI."
     },
     {
       "id": "faq-011",

@@ -1,4 +1,4 @@
-"""Comprehensive test suite for NovaTech Solutions Business Digital Twin."""
+"""Comprehensive test suite for LYRA Business Digital Twin."""
 
 import pytest
 from starlette.testclient import TestClient
@@ -23,7 +23,7 @@ class TestBusinessDigitalTwin:
         profile_resp = client.get("/api/profile")
         assert profile_resp.status_code == 200
         profile = profile_resp.json()
-        assert profile["company_info"]["name"] == "NovaTech Solutions"
+        assert profile["company_info"]["name"] == "LYRA"
         assert len(profile["services_and_products"]) >= 5
         assert len(profile["faqs"]) >= 10
         assert len(profile["policies"]) >= 5
@@ -38,7 +38,7 @@ class TestBusinessDigitalTwin:
         assert resp.status_code == 200
         data = resp.json()
         ans = data["answer"].lower()
-        # Verify NovaTech products are present
+        # Verify LYRA products are present
         assert "ai customer support" in ans or "customer support automation" in ans or "enterprise rag" in ans
         assert len(data["sources"]) > 0
 
@@ -111,7 +111,7 @@ class TestBusinessDigitalTwin:
         ans = data["answer"]
         # Strict requirement from prompt
         expected_phrase = "I don't have that information in the current business knowledge base."
-        assert expected_phrase in ans or "NovaTech Solutions" in ans
+        assert expected_phrase in ans or "LYRA" in ans
 
     def test_unrelated_questions(self):
         """Verifies polite fallback when user asks completely unrelated non-business trivia."""
@@ -123,8 +123,8 @@ class TestBusinessDigitalTwin:
         assert resp.status_code == 200
         data = resp.json()
         ans = data["answer"]
-        # Should politely redirect to NovaTech Solutions
-        assert "NovaTech" in ans or "assist with" in ans or "business" in ans
+        # Should politely redirect to LYRA
+        assert "LYRA" in ans or "assist with" in ans or "business" in ans
 
     def test_follow_up_with_context(self):
         """Verifies multi-turn conversation memory and contextual pronoun resolution."""
@@ -153,7 +153,7 @@ class TestBusinessDigitalTwin:
         # 1. Admin adds a new custom policy
         policy_title = "Enterprise Zero-Trust Data Quarantine Policy"
         policy_summary = "All client test data is automatically sanitized within 12 hours."
-        policy_details = "Under Section 4.9 of NovaTech compliance, quarantined datasets are purged across all sandboxes within 12 hours."
+        policy_details = "Under Section 4.9 of LYRA compliance, quarantined datasets are purged across all sandboxes within 12 hours."
         
         admin_resp = client.post("/api/admin/policy", json={
             "title": policy_title,

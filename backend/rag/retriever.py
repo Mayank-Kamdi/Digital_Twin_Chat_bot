@@ -1,4 +1,4 @@
-"""Query pre-processing and hybrid RAG retriever for NovaTech Solutions."""
+"""Query pre-processing and hybrid RAG retriever for LYRA."""
 
 import re
 from typing import List, Dict, Any, Optional, Tuple
@@ -90,7 +90,7 @@ class Retriever:
     def format_context_for_prompt(self, documents: List[Dict[str, Any]]) -> str:
         """Formats retrieved documents into a clean context block for the LLM."""
         if not documents:
-            return "No relevant business documents found in the NovaTech knowledge base."
+            return "No relevant business documents found in the LYRA knowledge base."
 
         formatted_blocks = []
         for i, doc in enumerate(documents, start=1):
