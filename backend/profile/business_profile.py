@@ -16,15 +16,26 @@ class BusinessProfile:
         self._data: Dict[str, Any] = self._load_data()
 
     def _load_data(self) -> Dict[str, Any]:
-        if not self.data_file.exists():
-            raise FileNotFoundError(f"Business profile data not found at {self.data_file}")
-        with open(self.data_file, "r", encoding="utf-8") as f:
-            return json.load(f)
+        if self.data_file.exists():
+            try:
+                with open(self.data_file, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                pass
+        
+        # Fallback to static python dictionary on serverless environments (like Vercel)
+        # where the JSON file might not be bundled or is inaccessible.
+        from backend.profile.data.lyra_data_dict import DEFAULT_DATA
+        return DEFAULT_DATA
 
     def save_data(self) -> None:
         """Persists current data back to file."""
-        with open(self.data_file, "w", encoding="utf-8") as f:
-            json.dump(self._data, f, indent=2)
+        try:
+            with open(self.data_file, "w", encoding="utf-8") as f:
+                json.dump(self._data, f, indent=2)
+        except OSError:
+            # Ignore read-only filesystem errors on serverless providers
+            pass
 
     @property
     def company_info(self) -> Dict[str, Any]:
