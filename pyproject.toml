@@ -9,5 +9,3 @@ dependencies = [
     "requests>=2.31.0"
 ]
 
-[tool.vercel]
-entrypoint = "backend.app:app"
