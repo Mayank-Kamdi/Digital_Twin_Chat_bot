@@ -1,0 +1,15 @@
+{
+  "name": "lyra-digital-twin",
+  "version": "1.0.0",
+  "description": "LYRA Business Digital Twin with FastAPI backend",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'No build step required for this project'"
+  },
+  "keywords": ["fastapi", "digital-twin", "ai"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.1.0"
+  }
+}

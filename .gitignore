@@ -13,6 +13,10 @@ venv/
 env/
 .venv/
 
+# Node modules
+node_modules/
+package-lock.json
+
 # Operating system files
 Thumbs.db
 .DS_Store
